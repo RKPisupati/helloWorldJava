@@ -1,0 +1,55 @@
+Steps to create a sample Spring Boot application using Spring Boot CLI
+1) Create a folder called:springbootdemo[eg:C:\Users\rpisupat\Documents\SpringBootHelloWorld]
+2) Add a file:pom.xml with the below xml code
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.javacode</groupId>
+    <artifactId>spring-boot-hello-world</artifactId>
+    <version>1.0.0</version>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+    </parent>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+    </dependencies>
+      <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>  
+</project>
+3) createa folder structure src\main\java\net\javacode in the above folder[eg:C:\Users\rpisupat\Documents\SpringBootHelloWorld\src\main\java\net\javacode]
+4) Create a java file:SpringBootHelloWorld.java and have the below code
+package net.javacode;
+import org.springframework.boot.*;
+import org.springframework.boot.autoconfigure.*;
+import org.springframework.web.bind.annotation.*;
+@RestController
+@EnableAutoConfiguration
+public class SpringBootHelloWorld {
+    @RequestMapping("/")
+    String home() {
+        return "<b><h1>Hello World Spring Boot!</h1></b>";
+    }
+    public static void main(String[] args) throws Exception {
+        SpringApplication.run(SpringBootHelloWorld.class, args);
+    }
+}
+5) Now it is the time to compile and run this code. To do this, we need to install Apache Maven (apache-maven-3.6.3) and Spring Boot CLI (V1.0.0)
+Set the JAVA_HOME and PATH variables accordingly [eg:C:\>Set JAVA_HOME="C:\Users\rpisupat\Documents\JenkinsIntegPega\jdk1.8.0_121"]
+C:\Users\rpisupat\Documents\SpringBootHelloWorld>mvn spring-boot:run
+The goal spring-boot:run tells Maven to compile the project and launch Spring Boot. If the compilation is successful, you can see the logo of Spring Boot appears and we can see the localhost  with 8080
+6) Now we can type the following URL in your web browser to access the web application:
+http://localhost:8080/
+
+
